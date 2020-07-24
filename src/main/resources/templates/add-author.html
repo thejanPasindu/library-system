@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Author</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container my-5">
+    <h3> Add Author</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="">
+                <!--/*@thymesVar id="author" type="com.library.library.model.Author"*/-->
+                <form action="#" th:action="@{/author/new}" th:object="${author}" onsubmit="return validateForm()" name="authorForm" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="name" class="col-form-label">Author Name</label>
+                            <input type="text" th:field="*{name}" class="form-control" id="name" name="name" placeholder="Name">
+                            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                            <span id="errorText" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value="Add Author" />
+                        </div>
+
+                        <div class="form-group col-md-8"></div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+<script>
+    function validateForm() {
+        let x = document.forms["authorForm"]["name"].value;
+        let text = "";
+        if (x == "") {
+            text = "Author name cant be empty"
+            document.getElementById("errorText").innerHTML = text;
+            return false;
+        }
+
+    }
+</script>
+</body>
+</html>

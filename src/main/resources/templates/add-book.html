@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container my-5">
+    <h3> Add Book</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-12">
+                <!--/*@thymesVar id="book" type="com.library.library.model.Book"*/-->
+                <form action="#" th:action="@{/book/new}" th:object="${book}"  method="post">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="name" class="col-form-label">Book Name</label>
+                            <input type="text" th:field="*{bookName}" class="form-control" id="name" placeholder="Name">
+                            <span th:if="${#fields.hasErrors('bookName')}" th:errors="*{bookName}" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="description" class="col-form-label">Book Discription</label>
+                            <textarea class="form-control" th:field="*{description}"  id="description" rows="5" onkeyup="countChars(this);"></textarea>
+                                    <p id="charNum">250 characters remaining</p>
+                            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-12 row d-flex align-items-center">
+                                    <div class="col-md-9 form-group">
+                                        <label for="AuthorSelection">Select Author</label>
+                                        <select class="form-control" id="AuthorSelection"  th:field="*{author.authorId}">
+                                            <option th:each="author : ${authors}" th:text="${author.name}" th:value="${author.authorId}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="btn btn-outline-primary" href="/author/">Add Author</a>
+                                    </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value="Add Book" />
+                        </div>
+
+                        <div class="form-group col-md-8"></div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+<script>
+    function countChars(obj){
+        let maxLength = 250;
+        let strLength = obj.value.length;
+        let charRemain = (maxLength - strLength);
+        if(charRemain < 0){
+            document.getElementById("charNum").innerHTML = '<span style="color: #ff0000;">You have exceeded the limit of '+maxLength+' characters</span>';
+        }else{
+            document.getElementById("charNum").innerHTML = charRemain+' characters remaining';
+        }
+    }
+</script>
+</body>
+</html>

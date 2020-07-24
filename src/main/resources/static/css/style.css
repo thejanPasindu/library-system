@@ -1,0 +1,39 @@
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
+.my-container{
+    padding-top: 80px !important;
+    display: flex;
+    margin: auto;
+    width: 70%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.my-container-2{
+    padding-top: 80px !important;
+    display: flex;
+    margin: auto;
+    width: 90%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card{
+    margin: 10px;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-body a{
+    margin-top: 10px;
+}
+
+.card-body p{
+    text-align: justify;
+}
+
+.alert{
+    width: 80%;
+    font-size: 25px;
+}
