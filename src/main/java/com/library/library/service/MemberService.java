@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class MemberService {
 
-    private static final Logger logger = LoggerFactory.getLogger(MyAccessDeniedHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(MemberService.class);
     private final MemberPersistanceLayerInterface memberPersistanceLayerInterface;
 
     @Autowired

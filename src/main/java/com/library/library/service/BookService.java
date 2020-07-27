@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class BookService {
 
-    private static final Logger logger = LoggerFactory.getLogger(MyAccessDeniedHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(BookService.class);
 
     private  final BookPersistanceLayerInterface bookPersistanceLayerInterface;
     private final AuthorService authorService;
